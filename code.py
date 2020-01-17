@@ -24,9 +24,15 @@ from sklearn.ensemble import VotingClassifier
 filename = 'bruteforcedataset.csv'
 CSV = pandas.read_csv(filename)
 
+with open(filename, 'r') as csv:
+                    first_line = csv.readline()
+                    your_data = csv.readlines()
+
+ncol = first_line.count(',')
+
 Array = CSV.values
-X = Array[:,0:78]
-y = Array[:,78]
+X = Array[:,0:ncol]
+y = Array[:,ncol]
 
 #X_new = SelectKBest(mutual_info_classif, k=10).fit_transform(X, y)
 
